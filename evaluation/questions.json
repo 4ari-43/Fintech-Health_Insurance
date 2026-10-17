@@ -1,0 +1,11 @@
+[
+    {"id": "Q1", "question": "Are emergency services covered if I go to an out-of-network hospital?", "expected_pages": [], "notes": "emergency + network"},
+    {"id": "Q2", "question": "Will the plan pay for an operation if I need it urgently?", "expected_pages": [], "notes": "synonyms: operation/urgent vs surgery/emergency"},
+    {"id": "Q3", "question": "Does the plan cover emergency surgery while I am travelling abroad?", "expected_pages": [], "notes": "overseas; may have only partial evidence"},
+    {"id": "Q4", "question": "What treatments or services are not covered by this plan?", "expected_pages": [], "notes": "exclusions"},
+    {"id": "Q5", "question": "What is the calendar year maximum for chiropractic care?", "expected_pages": [], "notes": "numerical limit"},
+    {"id": "Q6", "question": "Do I need prior authorization before being admitted to a hospital?", "expected_pages": [], "notes": "pre-certification wording may differ"},
+    {"id": "Q7", "question": "How much more will I pay if I see an out-of-network doctor?", "expected_pages": [], "notes": "cost sharing + network"},
+    {"id": "Q8", "question": "How does the plan define an emergency?", "expected_pages": [], "notes": "definition"},
+    {"id": "Q9", "question": "Does this plan pay for my pet's veterinary care?", "expected_pages": [], "notes": "evidence should be insufficient: check that nothing relevant is returned with high confidence"}
+  ]
