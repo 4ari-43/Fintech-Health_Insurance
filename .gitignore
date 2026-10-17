@@ -4,3 +4,7 @@ __pycache__/
 .pytest_cache/
 .DS_Store
 *.pyc
+
+# API keys and local secrets
+.env
+.env.*

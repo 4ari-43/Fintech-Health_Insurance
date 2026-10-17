@@ -1,5 +1,14 @@
+
+# Person 1 - PDF processing and retrieval
 pymupdf
 numpy
 sentence-transformers
+
+# Person 2 - AI question answering
+ollama
+google-genai
+python-dotenv
+
+# Shared dependencies
 pydantic>=2
 pytest
