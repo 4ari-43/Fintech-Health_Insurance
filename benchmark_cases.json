@@ -1,0 +1,452 @@
+[
+  {
+    "id": "case-001",
+    "request": {
+      "policy_id": "POL1",
+      "question": "Is trip cancellation covered?",
+      "answer_draft": {
+        "answer_text": "Yes, up to $5,000.",
+        "claims": [
+          {
+            "claim_id": "c1",
+            "text": "Trip cancellation is covered up to $5,000.",
+            "citation_ids": ["p1"]
+          }
+        ],
+        "follow_up_questions": [],
+        "limitations": []
+      },
+      "retrieved_passages": [
+        {
+          "passage_id": "p1",
+          "policy_id": "POL1",
+          "page_start": 1,
+          "page_end": 1,
+          "section": "Coverage",
+          "text": "Trip cancellation is covered up to $5,000."
+        },
+        {
+          "passage_id": "p2",
+          "policy_id": "POL1",
+          "page_start": 2,
+          "page_end": 2,
+          "section": "Exclusions",
+          "text": "Cancellation due to known events before purchase is excluded."
+        }
+      ],
+      "user_facts": {}
+    },
+    "expected_status": "supported",
+    "expected_issue_codes": []
+  },
+  {
+    "id": "case-002",
+    "request": {
+      "policy_id": "POL1",
+      "question": "Is trip cancellation covered?",
+      "answer_draft": {
+        "answer_text": "Yes, up to $5,000.",
+        "claims": [
+          {
+            "claim_id": "c1",
+            "text": "Trip cancellation is covered up to $5,000.",
+            "citation_ids": ["p999"]
+          }
+        ],
+        "follow_up_questions": [],
+        "limitations": []
+      },
+      "retrieved_passages": [
+        {
+          "passage_id": "p1",
+          "policy_id": "POL1",
+          "page_start": 1,
+          "page_end": 1,
+          "section": "Coverage",
+          "text": "Trip cancellation is covered up to $5,000."
+        }
+      ],
+      "user_facts": {}
+    },
+    "expected_status": "rejected",
+    "expected_issue_codes": ["INVALID_CITATION"]
+  },
+  {
+    "id": "case-003",
+    "request": {
+      "policy_id": "POL1",
+      "question": "Is trip cancellation covered?",
+      "answer_draft": {
+        "answer_text": "Yes, up to $10,000.",
+        "claims": [
+          {
+            "claim_id": "c1",
+            "text": "Trip cancellation is covered up to $10,000.",
+            "citation_ids": ["p1"]
+          }
+        ],
+        "follow_up_questions": [],
+        "limitations": []
+      },
+      "retrieved_passages": [
+        {
+          "passage_id": "p1",
+          "policy_id": "POL1",
+          "page_start": 1,
+          "page_end": 1,
+          "section": "Coverage",
+          "text": "Trip cancellation is covered up to $5,000."
+        }
+      ],
+      "user_facts": {}
+    },
+    "expected_status": "insufficient_evidence",
+    "expected_issue_codes": ["UNSUPPORTED_CLAIM"]
+  },
+  {
+    "id": "case-004",
+    "request": {
+      "policy_id": "POL1",
+      "question": "I knew about the storm before buying. Is my cancellation covered?",
+      "answer_draft": {
+        "answer_text": "Yes, trip cancellation is covered up to $5,000.",
+        "claims": [
+          {
+            "claim_id": "c1",
+            "text": "Trip cancellation is covered up to $5,000.",
+            "citation_ids": ["p1"]
+          }
+        ],
+        "follow_up_questions": [],
+        "limitations": []
+      },
+      "retrieved_passages": [
+        {
+          "passage_id": "p1",
+          "policy_id": "POL1",
+          "page_start": 1,
+          "page_end": 1,
+          "section": "Coverage",
+          "text": "Trip cancellation is covered up to $5,000."
+        },
+        {
+          "passage_id": "p2",
+          "policy_id": "POL1",
+          "page_start": 2,
+          "page_end": 2,
+          "section": "Exclusions",
+          "text": "Cancellation due to known events before purchase is excluded."
+        }
+      ],
+      "user_facts": {}
+    },
+    "expected_status": "rejected",
+    "expected_issue_codes": ["CONTRADICTING_CLAUSE"]
+  },
+  {
+    "id": "case-005",
+    "request": {
+      "policy_id": "POL1",
+      "question": "Is trip cancellation covered?",
+      "answer_draft": {
+        "answer_text": "Yes, trip cancellation is covered.",
+        "claims": [
+          {
+            "claim_id": "c1",
+            "text": "Trip cancellation is covered.",
+            "citation_ids": []
+          }
+        ],
+        "follow_up_questions": [],
+        "limitations": []
+      },
+      "retrieved_passages": [
+        {
+          "passage_id": "p1",
+          "policy_id": "POL1",
+          "page_start": 1,
+          "page_end": 1,
+          "section": "Coverage",
+          "text": "Trip cancellation is covered up to $5,000."
+        }
+      ],
+      "user_facts": {}
+    },
+    "expected_status": "needs_review",
+    "expected_issue_codes": ["UNSUPPORTED_CLAIM"]
+  },
+  {
+    "id": "case-006",
+    "request": {
+      "policy_id": "POL1",
+      "question": "Is trip cancellation covered for my 45-day trip?",
+      "answer_draft": {
+        "answer_text": "Yes, up to $5,000.",
+        "claims": [
+          {
+            "claim_id": "c1",
+            "text": "Trip cancellation is covered up to $5,000.",
+            "citation_ids": ["p1"]
+          }
+        ],
+        "follow_up_questions": [],
+        "limitations": []
+      },
+      "retrieved_passages": [
+        {
+          "passage_id": "p1",
+          "policy_id": "POL1",
+          "page_start": 1,
+          "page_end": 1,
+          "section": "Coverage",
+          "text": "Trip cancellation is covered up to $5,000."
+        },
+        {
+          "passage_id": "p3",
+          "policy_id": "POL1",
+          "page_start": 4,
+          "page_end": 4,
+          "section": "Conditions",
+          "text": "Coverage applies only to trips of 30 days or fewer."
+        }
+      ],
+      "user_facts": {"trip_length_days": 45}
+    },
+    "expected_status": "rejected",
+    "expected_issue_codes": ["MISSING_CONDITION"]
+  },
+  {
+    "id": "case-007",
+    "request": {
+      "policy_id": "POL1",
+      "question": "Is trip cancellation covered?",
+      "answer_draft": {
+        "answer_text": "Yes, and also medical expenses are covered.",
+        "claims": [
+          {
+            "claim_id": "c1",
+            "text": "Trip cancellation is covered up to $5,000.",
+            "citation_ids": ["p1"]
+          },
+          {
+            "claim_id": "c2",
+            "text": "Medical expenses are covered up to $50,000.",
+            "citation_ids": ["p1"]
+          }
+        ],
+        "follow_up_questions": [],
+        "limitations": []
+      },
+      "retrieved_passages": [
+        {
+          "passage_id": "p1",
+          "policy_id": "POL1",
+          "page_start": 1,
+          "page_end": 1,
+          "section": "Coverage",
+          "text": "Trip cancellation is covered up to $5,000."
+        }
+      ],
+      "user_facts": {}
+    },
+    "expected_status": "insufficient_evidence",
+    "expected_issue_codes": ["UNSUPPORTED_CLAIM"]
+  },
+  {
+    "id": "case-008",
+    "request": {
+      "policy_id": "POL1",
+      "question": "Is trip cancellation covered?",
+      "answer_draft": {
+        "answer_text": "Yes, up to $5,000.",
+        "claims": [
+          {
+            "claim_id": "c1",
+            "text": "Trip cancellation is covered up to $5,000.",
+            "citation_ids": ["p1"]
+          }
+        ],
+        "follow_up_questions": [],
+        "limitations": []
+      },
+      "retrieved_passages": [
+        {
+          "passage_id": "p1",
+          "policy_id": "POL1",
+          "page_start": 1,
+          "page_end": 1,
+          "section": "Coverage",
+          "text": "Trip cancellation is covered up to $5,000."
+        },
+        {
+          "passage_id": "pX",
+          "policy_id": "POL2",
+          "page_start": 1,
+          "page_end": 1,
+          "section": "Coverage",
+          "text": "A different policy's coverage."
+        }
+      ],
+      "user_facts": {}
+    },
+    "expected_status": "supported",
+    "expected_issue_codes": []
+  },
+  {
+    "id": "case-009",
+    "request": {
+      "policy_id": "POL1",
+      "question": "Is trip cancellation covered?",
+      "answer_draft": {
+        "answer_text": "Yes, up to $5,000.",
+        "claims": [
+          {
+            "claim_id": "c1",
+            "text": "Trip cancellation is covered up to $5,000.",
+            "citation_ids": ["pX"]
+          }
+        ],
+        "follow_up_questions": [],
+        "limitations": []
+      },
+      "retrieved_passages": [
+        {
+          "passage_id": "p1",
+          "policy_id": "POL1",
+          "page_start": 1,
+          "page_end": 1,
+          "section": "Coverage",
+          "text": "Trip cancellation is covered up to $5,000."
+        },
+        {
+          "passage_id": "pX",
+          "policy_id": "POL2",
+          "page_start": 1,
+          "page_end": 1,
+          "section": "Coverage",
+          "text": "A different policy's coverage."
+        }
+      ],
+      "user_facts": {}
+    },
+    "expected_status": "rejected",
+    "expected_issue_codes": ["INVALID_CITATION"]
+  },
+  {
+    "id": "case-010",
+    "request": {
+      "policy_id": "POL1",
+      "question": "Is trip cancellation covered?",
+      "answer_draft": {
+        "answer_text": "Yes, up to $5,000, but exclusions may apply.",
+        "claims": [
+          {
+            "claim_id": "c1",
+            "text": "Trip cancellation is covered up to $5,000.",
+            "citation_ids": ["p1"]
+          }
+        ],
+        "follow_up_questions": ["Was the event known before purchase?"],
+        "limitations": ["Known events are excluded."]
+      },
+      "retrieved_passages": [
+        {
+          "passage_id": "p1",
+          "policy_id": "POL1",
+          "page_start": 1,
+          "page_end": 1,
+          "section": "Coverage",
+          "text": "Trip cancellation is covered up to $5,000."
+        },
+        {
+          "passage_id": "p2",
+          "policy_id": "POL1",
+          "page_start": 2,
+          "page_end": 2,
+          "section": "Exclusions",
+          "text": "Cancellation due to known events before purchase is excluded."
+        }
+      ],
+      "user_facts": {}
+    },
+    "expected_status": "needs_review",
+    "expected_issue_codes": ["POSSIBLE_EXCLUSION"]
+  },
+  {
+    "id": "case-011",
+    "request": {
+      "policy_id": "POL1",
+      "question": "Is cancellation due to a known storm covered?",
+      "answer_draft": {
+        "answer_text": "No, cancellation due to known events is excluded.",
+        "claims": [
+          {
+            "claim_id": "c1",
+            "text": "Cancellation due to known events before purchase is excluded.",
+            "citation_ids": ["p2"]
+          }
+        ],
+        "follow_up_questions": [],
+        "limitations": []
+      },
+      "retrieved_passages": [
+        {
+          "passage_id": "p1",
+          "policy_id": "POL1",
+          "page_start": 1,
+          "page_end": 1,
+          "section": "Coverage",
+          "text": "Trip cancellation is covered up to $5,000."
+        },
+        {
+          "passage_id": "p2",
+          "policy_id": "POL1",
+          "page_start": 2,
+          "page_end": 2,
+          "section": "Exclusions",
+          "text": "Cancellation due to known events before purchase is excluded."
+        }
+      ],
+      "user_facts": {}
+    },
+    "expected_status": "supported",
+    "expected_issue_codes": []
+  },
+  {
+    "id": "case-012",
+    "request": {
+      "policy_id": "POL1",
+      "question": "Is trip cancellation covered?",
+      "answer_draft": {
+        "answer_text": "Yes, up to $5,000.",
+        "claims": [
+          {
+            "claim_id": "c1",
+            "text": "Trip cancellation is covered up to $5,000.",
+            "citation_ids": ["p1"]
+          },
+          {
+            "claim_id": "c1",
+            "text": "Duplicate claim id test.",
+            "citation_ids": ["p1"]
+          }
+        ],
+        "follow_up_questions": [],
+        "limitations": []
+      },
+      "retrieved_passages": [
+        {
+          "passage_id": "p1",
+          "policy_id": "POL1",
+          "page_start": 1,
+          "page_end": 1,
+          "section": "Coverage",
+          "text": "Trip cancellation is covered up to $5,000."
+        }
+      ],
+      "user_facts": {}
+    },
+    "expected_status": "rejected",
+    "expected_issue_codes": ["INVALID_VERIFICATION_INPUT"]
+  }
+]
