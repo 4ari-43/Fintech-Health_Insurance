@@ -12,3 +12,5 @@ python-dotenv
 # Shared dependencies
 pydantic>=2
 pytest
+# Person 3 - AI verification
+openai
