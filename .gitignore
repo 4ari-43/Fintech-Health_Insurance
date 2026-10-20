@@ -8,3 +8,15 @@ __pycache__/
 # API keys and local secrets
 .env
 .env.*
+
+# PolicyIQ browser app and local artifacts
+frontend/node_modules/
+frontend/dist/
+frontend/*.tsbuildinfo
+frontend/playwright-report/
+frontend/test-results/
+.policyiq/
+*.db
+*.db-shm
+*.db-wal
+!**/.env.example

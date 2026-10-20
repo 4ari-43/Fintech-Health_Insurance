@@ -1,4 +1,4 @@
-
+﻿
 from unittest.mock import Mock
 
 from google.genai import errors
@@ -6,7 +6,9 @@ from google.genai import errors
 from providers.fallback_provider import FallbackProvider
 
 
-def test_fallback_to_second_model():
+def test_fallback_to_second_model(monkeypatch):
+    # No network call is made; the providers below are replaced by controlled mocks.
+    monkeypatch.setenv("GEMINI_API_KEY", "test-placeholder-not-a-real-key")
     provider = FallbackProvider()
 
     first = Mock()
@@ -37,3 +39,4 @@ def test_fallback_to_second_model():
     assert result == '{"status": "SUPPORTED"}'
     assert first.generate.call_count == 1
     assert second.generate.call_count == 1
+

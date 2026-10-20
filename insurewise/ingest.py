@@ -1,4 +1,4 @@
-"""
+﻿"""
 Safe PDF ingestion: PDF file -> PolicyDocument.
 
 Run from the project folder:
@@ -83,7 +83,8 @@ def process_pdf(
 
     # ---- Open ----
     try:
-        doc = pymupdf.open(path)
+        # Open bounded bytes so a corrupt PDF cannot retain a Windows file handle.
+        doc = pymupdf.open(stream=path.read_bytes(), filetype='pdf')
     except Exception as exc:
         raise IngestionError(IngestionErrorCode.PDF_PARSE_FAILED, f"Could not read this PDF: {name}") from exc
 

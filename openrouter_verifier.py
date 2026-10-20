@@ -11,6 +11,8 @@ class OpenRouterVerifier(VerifierModel):
         self.client = OpenAI(
             base_url="https://openrouter.ai/api/v1",
             api_key=os.environ["OPENROUTER_API_KEY"],
+            timeout=20.0,
+            max_retries=0,
         )
         self.model = model
 
@@ -30,7 +32,7 @@ class OpenRouterVerifier(VerifierModel):
             temperature=0.0,
         )
         data = json.loads(resp.choices[0].message.content)
-        return [q for q in data.get("queries", []) if isinstance(q, str) and q.strip()]
+        return [q for q in data.get("queries", []) if isinstance(q, str) and q.strip()][:5]
 
     def judge_claims(self, question, claims, passages, user_facts):
 
@@ -84,3 +86,4 @@ Return ONLY JSON:
             return JudgeOutput(**data)
         except (json.JSONDecodeError, KeyError) as e:
             raise ValueError(f"Judge returned malformed JSON: {e}") from e
+

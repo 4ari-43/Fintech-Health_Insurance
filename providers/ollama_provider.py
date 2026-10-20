@@ -1,4 +1,4 @@
-
+﻿
 import ollama
 
 from providers.base import AIProvider
@@ -9,6 +9,7 @@ class OllamaProvider(AIProvider):
 
     def __init__(self, model: str = "qwen3:8b"):
         self.model = model
+        self.client = ollama.Client(timeout=20.0)
 
     def generate(
         self,
@@ -16,7 +17,7 @@ class OllamaProvider(AIProvider):
         user_prompt: str,
     ) -> str:
 
-        response = ollama.chat(
+        response = self.client.chat(
             model=self.model,
             messages=[
                 {
@@ -36,3 +37,4 @@ class OllamaProvider(AIProvider):
         )
 
         return response["message"]["content"]
+
